@@ -13,7 +13,7 @@
 
 	<organization>
 		<name>Mithun Technologies</name>
-		<url>http://mithuntechnologies.com/</url>
+		<url>http://chandhutechnologies.com/</url>
 	</organization>
 
 	<properties>
@@ -98,13 +98,13 @@
 	
 	    <repository>
 	      <id>nexus</id>
-	      <name>Chandhu Technologies Releases Nexus Repository</name>
+	      <name>Facebook Releases Nexus Repository</name>
 	      <url>http://3.7.47.48:9980/chandhutechnologies/repository/facebook-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Chandhu Technologies Snapshot Nexus Repository </name>
+	      <name>Facebook Snapshot Nexus Repository </name>
 	      <url>http://3.7.47.48:9980/chandhutechnologies/repository/facebook-snapshot/</url>
 	    </snapshotRepository>
 	    
