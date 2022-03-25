@@ -6,7 +6,7 @@ echo "The Job Name is:  ${env.JOB_NAME} "
 echo "The Build number is:  ${env.BUILD_NUMBER} "
 
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
-
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
 
 //Checkout Stage
 stage('CheckoutCode'){
