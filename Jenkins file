@@ -1,0 +1,33 @@
+node{
+
+def mavenHome = tool name: "maven3.8.5"
+
+//Checkout Stage
+stage('CheckoutCode'){
+git branch: 'development', credentialsId: '79383f32-4ea1-4f24-9b2e-5dd13cf743f7', url: 'https://github.com/chandhu-devops-janbatch/maven-web-application.git'
+}
+
+//Build Stage
+stage('Build'){
+
+sh "$mavenHome/bin/mvn clean package"
+}
+
+//Generate SonarQube Report
+stage('SonarQubeReport'){
+sh "$mavenHome/bin/mvn sonar:sonar"
+}
+
+//Upload Artifact into Artifacatory repo
+stage('UploadArtifact IntoNexus'){
+sh "$mavenHome/bin/mvn deploy"
+}
+
+//Deploy App into Tomcat Server
+stage('DeployAppIntoTomcat'){
+sshagent(['ed3df7b6-1918-46fe-beac-544717bb1fe1']) {
+    sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.111.62.140:/opt/apache-tomcat-9.0.59/webapps"
+}
+}
+
+}//Node Closing
